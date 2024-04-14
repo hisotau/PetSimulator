@@ -1,0 +1,38 @@
+name: PetSimulator
+version: '${version}'
+main: org.hisotau.petsimulator.PetSimulator
+api-version: '1.20'
+authors: [Hisotau]
+website: https://github.com/hisotau
+
+commands:
+  pet:
+    description: "This is a command"
+    usage: /pet
+    aliases: [pet, pets]
+    permission: permission.node
+    permission-message: "You do not have permission to use this command"
+
+  calculator:
+    description: Считает два числа
+    aliases:
+      - calc
+    usage: /calculate <num1> <+|-|*|/> <num2>
+
+  gmc:
+    description: Включает креатив
+    usage: /gmc
+    permission: permission.node
+    permission-message: "You do not have permission to use this command"
+
+  gms:
+    description: Включает выживание
+    usage: /gms
+    permission: permission.node
+    permission-message: "You do not have permission to use this command"
+
+  shop:
+    description: Открыть магазин питомцев
+    usage: Введите /shop для открытия магазина
+    permission: permission.node
+    permission-message: "У вас недостаточно прав."
