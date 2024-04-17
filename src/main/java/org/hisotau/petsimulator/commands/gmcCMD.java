@@ -18,7 +18,7 @@ public class gmcCMD implements CommandExecutor {
         }
         Player player = (Player) commandSender;
         player.setGameMode(GameMode.CREATIVE);
-        Bukkit.broadcastMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "HstuDev // " + ChatColor.RESET + "Режим игры изменен на: " + ChatColor.GOLD + "Креатив" + ChatColor.RESET + ".");
+        Bukkit.broadcastMessage("§a§lHSTUDEV // " + "§RРежим игры изменен на: " + "§6Креатив" + "§R.");
         return true;
     }
 }

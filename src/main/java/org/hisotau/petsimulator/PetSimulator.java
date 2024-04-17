@@ -2,12 +2,8 @@ package org.hisotau.petsimulator;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
-import org.hisotau.petsimulator.eventsListener.events;
+import org.hisotau.petsimulator.commands.summonPetCMD;
 import org.hisotau.petsimulator.scoreboard.Board;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 
 public final class PetSimulator extends JavaPlugin {
 
@@ -15,19 +11,9 @@ public final class PetSimulator extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        List<enumCommands> listCommands = Arrays.asList(
-                enumCommands.CALCULATOR,
-                enumCommands.GMC,
-                enumCommands.GMS,
-                enumCommands.SHOP,
-                enumCommands.SUMMON_PET);
-
-        for (enumCommands command : listCommands) {
-            Objects.requireNonNull(getCommand(command.getName())).setExecutor(command.getExecutor());
-        }
-
-        getServer().getPluginManager().registerEvents(new events(),this);
-        getLogger().info("Plugin started...");
+       saveDefaultConfig();
+       getServer().getPluginCommand("pet").setExecutor(new summonPetCMD());
+       getLogger().info("Plugin started...");
 
         task = getServer().getScheduler().runTaskTimer(this, Board.getInstance(),0,20);
     }
