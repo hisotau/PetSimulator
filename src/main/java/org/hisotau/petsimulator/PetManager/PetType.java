@@ -7,14 +7,17 @@ import org.bukkit.entity.Pig;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public enum PetType {
-    OLIVIA(Cat.class, "Olivia"),
-    ROISE(Cat.class, "Roise"),
-    PAUK(Pig.class, "Pauk"),
-    MILKA(Cat.class, "Ксюня");
+    OLIVIA(Cat.class,PetRarity.COMMON ,"Olivia"),
+    ROISE(Cat.class,PetRarity.UNCOMMON ,"Roise"),
+    PAUK(Pig.class,PetRarity.COMMON ,"Pauk"),
+    MILKA(Cat.class,PetRarity.LEGENDARY ,"Ксюня"),;
 
     private final Class<? extends Entity> clazz;
     private final String alias;
+    private final PetRarity rarity;
+
 
     private static final Map<String, PetType> VALUES = new HashMap<>();
 
@@ -28,13 +31,22 @@ public enum PetType {
         return VALUES.get(alias);
     }
 
-    PetType(Class<? extends Entity> clazz, String alias) {
+    public PetRarity getRarity() {
+        return rarity;
+    }
+
+    PetType(Class<? extends Entity> clazz, PetRarity rarity, String alias) {
         this.clazz = clazz;
         this.alias = alias;
+        this.rarity = rarity;
+
     }
+
 
     public Class<? extends Entity> getClazz() {
         return this.clazz;
     }
+
+
 }
 
