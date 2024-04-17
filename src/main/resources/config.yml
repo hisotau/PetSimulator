@@ -1,0 +1,9 @@
+CUSTOM_PETS:
+  OLIVIA:
+    Name: "Olivia"
+    Rarity: UNCOMMON
+    Entity: CAT
+  ROSE:
+    Name: "Rose"
+    Rarity: UNCOMMON
+    Entity: CAT

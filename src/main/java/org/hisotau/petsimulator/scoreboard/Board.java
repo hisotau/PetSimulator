@@ -32,13 +32,14 @@ public class Board implements Runnable {
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         objective.setDisplayName("§b§lPET SIMULATOR");
 
-        objective.getScore( " ").setScore(1);
+        objective.getScore( "ㅤ").setScore(1);
         objective.getScore("§fВаш уровень: ").setScore(2);
         objective.getScore("§fВаш баланс: ").setScore(3);
-        objective.getScore(" ").setScore(4);
+        objective.getScore("ㅤ").setScore(4);
         objective.getScore("§fКол-во ваших питомцев: ").setScore(5);
         objective.getScore("§fВы можете вызвать: ").setScore(6);
-        objective.getScore(" ").setScore(7);
+        objective.getScore("ㅤ").setScore(7);
+        objective.getScore("§7me.hisotau").setScore(6);
 
         Team team1 = scoreboard.registerNewTeam("team1");
         String teamkey = ChatColor.GOLD.toString();
