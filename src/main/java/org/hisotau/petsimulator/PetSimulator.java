@@ -5,9 +5,6 @@ import org.bukkit.scheduler.BukkitTask;
 import org.hisotau.petsimulator.commands.summonPetCMD;
 import org.hisotau.petsimulator.scoreboard.Board;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 
 public final class PetSimulator extends JavaPlugin {
 

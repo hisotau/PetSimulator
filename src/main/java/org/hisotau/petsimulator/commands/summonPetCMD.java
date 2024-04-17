@@ -3,11 +3,13 @@ package org.hisotau.petsimulator.commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.hisotau.petsimulator.PetManager.PetRarity;
+import org.hisotau.petsimulator.PetSimulator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.hisotau.petsimulator.PetManager.PetManager;
-import org.hisotau.petsimulator.PetManager.PetType;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,9 +27,14 @@ public class summonPetCMD implements TabExecutor {
 
         Player player = (Player) commandSender;
         PetManager pets = new PetManager();
-        PetType petType = PetType.getByAlias(strings[0]);
-        if (petType!= null) {
-            pets.spawnPet(petType, player.getLocation());
+        var PetType = PetSimulator.getInstance().getConfig().getConfigurationSection("CUSTOM_PETS." + strings[0]+ ".");
+        String name = PetType.getString("Name");
+        EntityType entity = EntityType.valueOf("Entity");
+        PetRarity rarity = PetRarity.valueOf("Rarity");
+        if (name != null) {
+            String coloredName = rarity + name;
+            pets.spawnPet(coloredName,entity,player.getLocation());
+            player.sendMessage("§9§lPetSimulator // §RВы успешно призвали: " + coloredName);
         }
         else {
             System.out.println("Такого типа питомца не существует");
