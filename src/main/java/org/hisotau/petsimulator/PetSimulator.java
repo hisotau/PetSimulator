@@ -12,7 +12,7 @@ public final class PetSimulator extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-
+        saveDefaultConfig();
         getLogger().info("Plugin started...");
         getServer().getPluginCommand("pet").setExecutor(new summonPetCMD());
         task = getServer().getScheduler().runTaskTimer(this, Board.getInstance(),0,20);
