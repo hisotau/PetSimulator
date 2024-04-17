@@ -27,7 +27,7 @@ public class summonPetCMD implements TabExecutor {
 
         Player player = (Player) commandSender;
         PetManager pets = new PetManager();
-        var PetType = PetSimulator.getInstance().getConfig().getConfigurationSection("CUSTOM_PETS." + strings[0]+ ".");
+        var PetType = PetSimulator.getInstance().getConfig().getConfigurationSection("CUSTOM_PETS." +strings[0].toUpperCase()+ ".");
         String name = PetType.getString("Name");
         EntityType entity = EntityType.valueOf("Entity");
         PetRarity rarity = PetRarity.valueOf("Rarity");
