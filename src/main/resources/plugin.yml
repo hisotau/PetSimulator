@@ -36,3 +36,15 @@ commands:
     usage: Введите /shop для открытия магазина
     permission: permission.node
     permission-message: "У вас недостаточно прав."
+
+  money:
+    description: Получить деньги
+    usage: /money
+    permission: permission.node
+    permission-message: "У вас недостаточно прав."
+
+  visemoney:
+    description: Узнать деньги
+    usage: /visemoney
+    permission: permission.node
+    permission-message: "У вас недостаточно прав."
