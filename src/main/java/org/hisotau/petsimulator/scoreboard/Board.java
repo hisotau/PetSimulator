@@ -8,10 +8,10 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 import org.hisotau.petsimulator.PetSimulator;
+import org.hisotau.petsimulator.player.PlayerManager;
 
 public class Board implements Runnable {
     private final static Board instance = new Board();
-
     private Board() {
 
     }
@@ -37,27 +37,38 @@ public class Board implements Runnable {
         objective.getScore("§fВаш баланс: ").setScore(3);
         objective.getScore("ㅤ").setScore(4);
         objective.getScore("§fКол-во ваших питомцев: ").setScore(5);
-        objective.getScore("§fВы можете вызвать: ").setScore(6);
+        objective.getScore("§fВы можете вызвать:1 ").setScore(6);
         objective.getScore("ㅤ").setScore(7);
         objective.getScore("§7me.hisotau").setScore(6);
-
-        Team team1 = scoreboard.registerNewTeam("team1");
-        String teamkey = ChatColor.GOLD.toString();
-        team1.addEntry(teamkey);
-        team1.setPrefix("У вас на балансе: ");
-        team1.setSuffix("1500 монет.");
-
-
-        objective.getScore(teamkey).setScore(0);
         player.setScoreboard(scoreboard);
+        setTeam(player);
     }
 
     private void updateScoreboard(Player player) {
+        setTeam(player);
+    }
+
+    private void setTeam(Player player) {
         Scoreboard scoreboard = player.getScoreboard();
         Team team1 = scoreboard.getTeam("team1");
+        if (team1 == null) {
+            team1 = scoreboard.registerNewTeam("team1");
+            String teamkey = ChatColor.GOLD.toString();
+            team1.addEntry(teamkey);
+            team1.setPrefix("У вас на балансе: ");
+        }
+        PlayerManager playerManager = PetSimulator.getInstance().getPlayerWrapper(player.getName());
 
-        team1.setSuffix(ChatColor.YELLOW + "1500.");
+        if (playerManager != null) {
+            int money = playerManager.getUser().getMoney();
+            team1.setSuffix(ChatColor.YELLOW + "" + money + " монет.");
+        }
+        Objective objective = scoreboard.getObjective(DisplaySlot.SIDEBAR);
+
+        objective.getScore(ChatColor.GOLD.toString()).setScore(0);
     }
+
+
 
     public static Board getInstance(){
         return instance;

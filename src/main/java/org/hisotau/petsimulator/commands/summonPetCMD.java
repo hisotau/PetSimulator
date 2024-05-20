@@ -26,25 +26,25 @@ public class summonPetCMD implements TabExecutor {
         }
 
         Player player = (Player) commandSender;
-        PetManager pets = new PetManager();
-        var PetType = PetSimulator.getInstance().getConfig().getConfigurationSection("CUSTOM_PETS." + strings[0].toUpperCase());
+        var petType = PetSimulator.getInstance().getConfig().getConfigurationSection("CUSTOM_PETS." + strings[0].toUpperCase());
 
-        if (PetType != null) {
-            handleValidPetType(PetType, player, pets);
+        if (petType == null) {
+            handleInvalidPetType(player); // потом переделать
+            return true;
         } else {
-            handleInvalidPetType(player);
+            handleValidPetType(petType, player); // потом переделать
+            return true;
         }
 
-        return true;
     }
 
-    private void handleValidPetType(ConfigurationSection petType, Player player, PetManager pets) {
+    private void handleValidPetType(ConfigurationSection petType, Player player) {
         String name = petType.getString("Name");
         EntityType entity = EntityType.valueOf(petType.getString("Entity"));
         PetRarity rarity = PetRarity.valueOf(petType.getString("Rarity"));
 
         String coloredName = rarity.getColor() + name;
-        pets.spawnPet(coloredName, entity, player.getLocation());
+        PetManager.spawnPet(coloredName, entity, player.getLocation());
         player.sendMessage("§9§lPetSimulator // §RВы успешно призвали: " + coloredName);
     }
 

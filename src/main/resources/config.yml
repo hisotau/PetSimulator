@@ -1,9 +1,20 @@
 CUSTOM_PETS:
   OLIVIA:
+    ID: 1
     Name: "Olivia"
     Rarity: UNCOMMON
     Entity: CAT
+    COST: 1500
   ROSE:
+    ID: 2
     Name: "Rose"
     Rarity: UNCOMMON
     Entity: CAT
+    COST: 5500
+
+SQL_DATABASE:
+  host: 127.0.0.1
+  port: 3306
+  user: root
+  password: admin
+  database: petsimulator

@@ -8,7 +8,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 
 public class PetManager {
-    public void spawnPet(String name,EntityType entity, Location location) {
+    public static void spawnPet(String name, EntityType entity, Location location) {
         World world = location.getWorld();
         Entity pet = world.spawn(location, entity.getEntityClass());
         pet.setCustomNameVisible(true);
